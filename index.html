@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sami Ahmad Sanadi | Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .dark .gradient-text-dark {
+            background: linear-gradient(90deg, #a07bf8, #5594f8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.1);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        
+        .dark .timeline-item:not(:last-child)::after {
+            background-color: #4b5563;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md z-40 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#home" class="text-xl font-bold gradient-text">Sami Sanadi</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+                    <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a>
+                    <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a>
+                    <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
+                    <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Home</a>
+                <a href="#about" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">About</a>
+                <a href="#skills" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Skills</a>
+                <a href="#experience" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Experience</a>
+                <a href="#projects" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Projects</a>
+                <a href="#contact" class="block px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Sami Ahmad <span class="gradient-text">Sanadi</span></h1>
+                    <h2 class="text-xl md:text-2xl font-semibold mb-6 text-gray-600 dark:text-gray-300">Data Scientist | AI & ML Engineer | Turning Data into Actionable Insights</h2>
+                    <p class="text-lg mb-8 text-gray-700 dark:text-gray-300">A passionate data professional skilled in Python, NLP, and predictive modeling, with hands-on experience in building AI tools and data-driven dashboards.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">Get In Touch</a>
+                        <a href="#projects" class="px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg font-medium transition">View Projects</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute -inset-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                        <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
+                            <!-- Profile Image -->
+                            <img src="assets/profile.jpeg" alt="Sami Ahmad Sanadi" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+                            <span class="font-medium gradient-text dark:gradient-text-dark">Data Scientist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text dark:gradient-text-dark">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4">Professional Profile</h3>
+                        <p class="mb-4 text-gray-700 dark:text-gray-300">Aspiring Data Scientist with expertise in Python, Machine Learning, and AI technologies. Currently pursuing Bachelor's in Computer Science with hands-on experience in building AI applications and data visualization dashboards.</p>
+                        <p class="mb-4 text-gray-700 dark:text-gray-300">Completed internships at Skillzam (Data Science Instructor), NullClass (AI/ML Intern), and Pranaksh Technologies (Jr. Data Scientist), gaining practical experience in developing machine learning models and data-driven solutions.</p>
+                        <p class="text-gray-700 dark:text-gray-300">Proficient in Power BI and Tableau for creating interactive dashboards, with additional skills in AI prompt engineering and digital marketing strategies.</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold mb-4">Personal Details</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-medium text-gray-900 dark:text-gray-200 mb-2">Languages</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">English (Fluent)</span>
+                                <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">Hindi (Fluent)</span>
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">Arabic (Beginner)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-medium text-gray-900 dark:text-gray-200 mb-2">Education</h4>
+                            <div class="pl-4 border-l-2 border-blue-200 dark:border-blue-800">
+                                <p class="font-medium">Bachelor of Engineering (CSE)</p>
+                                <p class="text-gray-600 dark:text-gray-400">Jain College (2021-2024)</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Led 5+ projects including quiz app and OpenGL game development</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-gray-900 dark:text-gray-200 mb-2">Interests</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-sm">AI Research</span>
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-sm">Data Visualization</span>
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-sm">Generative AI</span>
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-sm">Tech Blogging</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text dark:gradient-text-dark">Technical Skills</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Python -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-blue-600">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Python</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <!-- Machine Learning -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-purple-600">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Machine Learning</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-purple-600 h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- NLP -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-green-600">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">NLP</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- Power BI -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-yellow-600">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Power BI</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-yellow-600 h-2 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+                
+                <!-- Tableau -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-blue-400">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Tableau</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-blue-400 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- LangChain -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-red-500">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">LangChain</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- AI Prompt Engineering -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-indigo-500">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">AI Prompt Engineering</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-indigo-500 h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- Digital Marketing -->
+                <div class="skill-badge bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-4xl text-pink-500">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg">Digital Marketing</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-3">
+                        <div class="bg-pink-500 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text dark:gradient-text-dark">Work Experience</h2>
+            
+            <div class="space-y-8">
+                <!-- Skillzam -->
+                <div class="timeline-item relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                            <h3 class="text-xl font-semibold">Data Science Instructor</h3>
+                            <span class="text-blue-600 dark:text-blue-400 font-medium">Skillzam</span>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4">2023 - Present</div>
+                        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Boosted enrollment rates by 18% through data-driven Meta Ads campaigns</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Developed and delivered curriculum on Python for Data Science and Machine Learning fundamentals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Mentored 50+ students in building their first ML projects</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- NullClass -->
+                <div class="timeline-item relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                            <h3 class="text-xl font-semibold">AI/ML Intern</h3>
+                            <span class="text-purple-600 dark:text-purple-400 font-medium">NullClass</span>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4">2023</div>
+                        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Built and deployed a generative AI tool for text synthesis using OpenAI's API</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Developed a PDF Q&A system using LangChain and vector embeddings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Created interactive dashboards to analyze model performance metrics</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Pranaksh Technologies -->
+                <div class="timeline-item relative pl-12">
+                    <div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                            <h3 class="text-xl font-semibold">Jr. Data Scientist</h3>
+                            <span class="text-green-600 dark:text-green-400 font-medium">Pranaksh Technologies</span>
+                        </div>
+                        <div class="text-gray-500 dark:text-gray-400 text-sm mb-4">2022 - 2023</div>
+                        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Developed predictive models for customer behavior analysis with 87% accuracy</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Created Power BI dashboards for real-time business metrics visualization</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Automated data cleaning processes, reducing preprocessing time by 40%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text dark:gradient-text-dark">Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- AI Assistant E.D.I.T.H -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Assistant E.D.I.T.H</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">A generative AI tool for text/image synthesis and PDF Q&A powered by OpenAI and LangChain.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Python</span>
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">LangChain</span>
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">OpenAI</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            View Project
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Netflix Dashboard -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-red-500 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-film text-6xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Netflix Content Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Interactive Tableau dashboard analyzing Netflix content trends, ratings, and genre distributions.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-xs">Tableau</span>
+                            <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-xs">Data Cleaning</span>
+                            <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">Visualization</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            View Dashboard
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Digital Marketing Campaign -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Digital Marketing Campaign</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Increased enrollment rates from 10% to 28% through data-driven Meta Ads campaigns and A/B testing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">Meta Ads</span>
+                            <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-xs">A/B Testing</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-full text-xs">Data Analysis</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                            Case Study
+                            <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More Projects Button -->
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-gray-800 rounded-lg font-medium transition">
+                    View All Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text dark:gradient-text-dark">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-300 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-200">Email</h4>
+                                    <a href="mailto:sami.sanadi@example.com" class="text-blue-600 dark:text-blue-400 hover:underline">sami.sanadi@example.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center text-purple-600 dark:text-purple-300 mr-4">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-200">LinkedIn</h4>
+                                    <a href="https://linkedin.com/in/samisanadi" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">linkedin.com/in/samisanadi</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-600 flex items-center justify-center text-gray-600 dark:text-gray-300 mr-4">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-200">GitHub</h4>
+                                    <a href="https://github.com/samisanadi" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">github.com/samisanadi</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-300 mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 dark:text-gray-200">Phone</h4>
+                                    <a href="tel:+919876543210" class="text-blue-600 dark:text-blue-400 hover:underline">+91 98765 43210</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-xl font-semibold mb-6">Send Me a Message</h3>
+                        
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition">
+                                Send Message
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-xl font-bold gradient-text">Sami Sanadi</a>
+                    <p class="mt-2">Data Scientist | AI & ML Engineer</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-medium text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+                <p>&copy; 2023 Sami Ahmad Sanadi. All rights reserved.</p>
+                <p class="mt-2">Built with <i class="fas fa-heart text-red-500"></i> and <i class="fas fa-coffee text-yellow-500"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition z-40">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or use preferred color scheme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
